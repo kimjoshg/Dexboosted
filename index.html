@@ -85,9 +85,21 @@ section{padding:125px 0}
 
 .cta{padding:60px 46px;border:1px solid rgba(255,180,0,.25);border-radius:25px;background:radial-gradient(circle at 80% 45%,rgba(255,180,0,.14),transparent 36%),linear-gradient(135deg,rgba(25,19,9,.96),rgba(7,6,5,.96));overflow:hidden;position:relative}.cta:after{content:"∞";position:absolute;right:12px;bottom:-90px;font-size:300px;font-weight:900;color:rgba(255,180,0,.035)}
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}
-footer{border-top:1px solid rgba(255,255,255,.07);padding:42px 0 60px;color:#625e56;font:10px 'DM Mono'}.footer-row{display:flex;justify-content:space-between;gap:20px}
+footer{border-top:1px solid rgba(255,255,255,.07);padding:42px 0 60px;color:#625e56;font:10px 'DM Mono'}.footer-row{display:flex;justify-content:space-between;gap:8px}
 
 @keyframes breathe{to{transform:scale(1.11);opacity:.85}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-11px)}}@keyframes scan{0%,100%{transform:translateY(-180px);opacity:0}35%,65%{opacity:.7}50%{transform:translateY(180px)}}@keyframes pulse{50%{opacity:.35;transform:scale(.75)}}@keyframes wheel{to{transform:translateY(12px);opacity:0}}@keyframes meter{to{width:88%}}
+
+/* Desktop hero tightening */
+@media(min-width:901px){
+  .hero{min-height:calc(100svh - 76px);grid-template-columns:minmax(500px,.9fr) minmax(560px,1.1fr);gap:0;overflow:hidden}
+  .hero-copy{padding-left:2vw}
+  .hero-art{height:700px;transform:translateX(40px)}
+  .hero-art .reference{right:-35px;top:25px}
+  .hero-art .art-ring{right:7%;top:10%}
+  .hero-art .art-glow{right:8%;top:14%}
+  .hero-art .scan{right:10%;top:50%}
+}
+
 @media(max-width:900px){
   .links{display:none}.hero{grid-template-columns:1fr;padding-top:110px}.hero-art{order:-1;min-height:420px}.stats{max-width:none}.flow{grid-template-columns:1fr 1fr}.dashboard{grid-template-columns:1fr}
 }
@@ -106,8 +118,8 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:42px 0 60px;color:#625
 
 <header><div class="nav">
   <a class="brand" href="#"><img src="logo.png" alt="DEXBOOSTED"><span>DEXBOOSTED</span></a>
-  <nav class="links"><a href="#thesis">Thesis</a><a href="#flywheel">How It Works</a><a href="#transparency">Transparency</a><a href="#faq">FAQ</a></nav>
-  <div class="nav-actions"><a class="icon" href="#" aria-label="X">𝕏</a><a class="icon" href="#" aria-label="Telegram">➤</a><a class="icon" href="#" aria-label="Discord">◉</a><a class="nav-buy" data-buy href="https://pump.fun/" target="_blank" rel="noopener">BUY ON PUMP.FUN ↗</a></div>
+  <nav class="links"><a href="#thesis">Thesis</a><a href="#flywheel">How It Works</a><a href="#why">Why DEXB</a><a href="#faq">FAQ</a></nav>
+  <div class="nav-actions"><a class="icon" href="https://x.com/DEX_BOOSTED" target="_blank" rel="noopener noreferrer" aria-label="DEXBOOSTED on X">𝕏</a><a class="icon" href="https://x.com/DEX_BOOSTED" target="_blank" rel="noopener noreferrer" aria-label="DEXBOOSTED social">✦</a><a class="icon" href="https://x.com/DEX_BOOSTED" target="_blank" rel="noopener noreferrer" aria-label="DEXBOOSTED community">●</a><a class="nav-buy" data-buy href="https://pump.fun/" target="_blank" rel="noopener">BUY ON PUMP.FUN ↗</a></div>
 </div></header>
 
 <main>
@@ -152,21 +164,32 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:42px 0 60px;color:#625
 </div>
 </section>
 
-<section id="transparency" class="reveal">
-<div class="kicker">04 / TRANSPARENCY</div><h2 class="title">Show the <span class="gold">flow.</span></h2>
-<p class="copy">When the token launches, this section can expose the contract, treasury wallet, boost transactions, allocation rules and links to on-chain proof. The visibility budget should be observable rather than a black box.</p>
+<section id="why" class="reveal">
+<div class="kicker">04 / WHY DEXBOOSTED</div>
+<h2 class="title">Visibility should be part of the <span class="gold">design.</span></h2>
+<p class="copy">DEXBOOSTED is built around a simple idea: attention is scarce. The project is designed to make visibility an intentional part of the token's operating model — with a clear boost destination, a visible community, and room to publish the on-chain flow as the system goes live.</p>
+<div class="cards">
+  <article class="card"><span class="num">01</span><h3>BUILT FOR DISCOVERY</h3><p>The brand, product and community are designed around getting discovered in a crowded meme-coin market.</p></article>
+  <article class="card"><span class="num">02</span><h3>BOOST-FIRST FLYWHEEL</h3><p>Designated trading-fee revenue can be directed toward DEX boosts according to the final deployed mechanics.</p></article>
+  <article class="card"><span class="num">03</span><h3>COMMUNITY SIGNAL</h3><p>Updates, milestones and boost activity can be shared publicly so the community can follow what is happening.</p></article>
+  <article class="card"><span class="num">04</span><h3>FOLLOW THE BUILD</h3><p>Follow DEXBOOSTED on X for launches, updates, boost activity and the next steps as the project develops.</p></article>
+</div>
+<div class="actions">
+  <a class="btn primary" href="https://x.com/DEX_BOOSTED" target="_blank" rel="noopener noreferrer">𝕏 FOLLOW DEXBOOSTED ON X ↗</a>
+  <a class="btn secondary" href="#boost">◎ VIEW BOOST TREASURY ↘</a>
+</div>
 </section>
 
 <section id="faq" class="reveal">
-<div class="cta"><div class="kicker">THE MISSION</div><h2 class="title">BUILD SOMETHING PEOPLE CAN <span class="gold">FIND.</span></h2><p class="copy">DEXBOOSTED is a visibility-first experiment. Trade it. Watch the treasury. See where the boost budget goes. Keep the flywheel transparent.</p><div class="actions"><a class="btn primary" data-buy href="https://pump.fun/" target="_blank">🚀 BUY ON PUMP.FUN ↗</a><a class="btn secondary" href="#boost">◎ CONTRIBUTE TO BOOST ↘</a></div></div>
+<div class="cta"><div class="kicker">THE MISSION</div><h2 class="title">BUILD SOMETHING PEOPLE CAN <span class="gold">FIND.</span></h2><p class="copy">DEXBOOSTED is a visibility-first experiment. Trade it. Watch the treasury. Follow the build. Keep the flywheel visible.</p><div class="actions"><a class="btn primary" data-buy href="https://pump.fun/" target="_blank">🚀 BUY ON PUMP.FUN ↗</a><a class="btn secondary" href="#boost">◎ CONTRIBUTE TO BOOST ↘</a></div></div>
 </section>
 </div>
 </main>
 
-<footer><div class="container footer-row"><span>© 2026 DEXBOOSTED.FUN</span><span>*Final fee allocation and token mechanics are defined by the deployed contract and public documentation.</span></div></footer>
+<footer><div class="container footer-row"><span>© 2026 DEXBOOSTED.FUN</span><span><a href="https://x.com/DEX_BOOSTED" target="_blank" rel="noopener noreferrer">𝕏 @DEX_BOOSTED</a> &nbsp; • &nbsp; *Final fee allocation and token mechanics are defined by the deployed contract and public documentation.</span></div></footer>
 
 <script>
-const CONFIG={contractAddress:"PASTE_CA_HERES",pumpFunUrl:"https://pump.fun/"};
+const CONFIG={contractAddress:"PASTE_CA_HERE",pumpFunUrl:"https://pump.fun/"};
 document.querySelectorAll("[data-buy]").forEach(a=>a.href=CONFIG.pumpFunUrl);
 const ca=document.getElementById("ca");
 if(CONFIG.contractAddress!=="PASTE_CA_HERE") ca.textContent=CONFIG.contractAddress;
