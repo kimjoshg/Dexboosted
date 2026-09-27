@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DEXBOOSTED — Build. Boost. Get Seen.</title>
+  <meta name="description" content="DEXBOOSTED is built around a simple thesis: meme coins compete for attention. Designated trading-fee revenue is intended to fund DEX boosts and visibility.">
+  <meta name="theme-color" content="#070604">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap');
+    :root{--bg:#070604;--gold:#ffb300;--gold2:#ffd76a;--text:#f6f2e9;--muted:#9e9a90;--line:rgba(255,179,0,.16);--card:rgba(18,15,9,.72)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none} button{font:inherit}
+    #bg{position:fixed;inset:0;width:100%;height:100%;z-index:-4}
+    .aurora{position:fixed;inset:-30%;z-index:-3;pointer-events:none;background:radial-gradient(circle at 70% 25%,rgba(255,179,0,.12),transparent 24%),radial-gradient(circle at 20% 65%,rgba(255,179,0,.07),transparent 25%);filter:blur(45px);animation:drift 13s ease-in-out infinite alternate}
+    .grid{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.28;background-image:linear-gradient(rgba(255,179,0,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,179,0,.055) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black 0%,transparent 90%)}
+    .vignette{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at center,transparent 25%,rgba(0,0,0,.38) 80%,rgba(0,0,0,.82))}
+    .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),#fff0b0,var(--gold));z-index:50;box-shadow:0 0 18px var(--gold)}
+    nav{position:fixed;top:0;left:0;right:0;height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(16px);background:rgba(7,6,4,.48);z-index:40}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.12em}.brand img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(255,179,0,.45))}.brand span{font-size:14px}
+    .navlinks{display:flex;gap:30px;font-size:13px;color:#c4c0b7}.navlinks a{transition:.25s}.navlinks a:hover{color:#fff}
+    .wrap{width:min(1180px,90vw);margin:auto}.hero{min-height:100svh;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:40px;padding:130px 0 80px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,179,0,.35);background:rgba(255,179,0,.06);padding:10px 15px;border-radius:999px;color:#ffd875;font:500 12px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase}.dot{width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px var(--gold);animation:pulse 1.5s infinite}
+    h1{font-size:clamp(60px,8.5vw,126px);line-height:.84;letter-spacing:-.075em;margin:28px 0 30px;font-weight:900}.gold{color:var(--gold);text-shadow:0 0 45px rgba(255,179,0,.18)}
+    .lead{max-width:690px;color:#b9b5ac;font-size:18px;line-height:1.7}.lead strong{color:#eee8dc}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(255,255,255,.14);padding:15px 21px;border-radius:13px;font-weight:800;font-size:14px;cursor:pointer;transition:.25s;position:relative;overflow:hidden}.btn.primary{background:var(--gold);color:#090703;border-color:var(--gold);box-shadow:0 12px 40px rgba(255,179,0,.18)}.btn.secondary{background:rgba(255,255,255,.035);color:#fff}.btn:hover{transform:translateY(-3px)}.btn.primary:hover{box-shadow:0 16px 55px rgba(255,179,0,.35)}
+    .hero-art{position:relative;display:grid;place-items:center;min-height:540px}.orb{position:absolute;width:min(510px,82vw);aspect-ratio:1;border:1px solid rgba(255,179,0,.22);border-radius:50%;box-shadow:0 0 100px rgba(255,179,0,.08),inset 0 0 80px rgba(255,179,0,.04);animation:spin 24s linear infinite}.orb:before,.orb:after{content:"";position:absolute;inset:8%;border:1px dashed rgba(255,215,106,.16);border-radius:50%;animation:spin 18s linear infinite reverse}.orb:after{inset:19%;animation-duration:11s}.logo-wrap{position:relative;width:min(430px,70vw);aspect-ratio:1;display:grid;place-items:center;animation:float 5s ease-in-out infinite}.logo-wrap:before{content:"";position:absolute;width:70%;height:70%;background:rgba(255,179,0,.18);filter:blur(70px);border-radius:50%}.logo-wrap img{position:relative;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 35px rgba(255,179,0,.48))}
+    .scan{position:absolute;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold);animation:scan 4.5s ease-in-out infinite;opacity:.5}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:45px}.stat{border:1px solid var(--line);background:rgba(12,10,7,.62);border-radius:16px;padding:20px}.stat b{font-size:28px}.stat span{display:block;color:#77736b;font:11px 'DM Mono',monospace;letter-spacing:.12em;margin-top:7px;text-transform:uppercase}
+    section{padding:130px 0}.section-kicker{color:var(--gold);font:500 12px 'DM Mono',monospace;letter-spacing:.18em;text-transform:uppercase}.section-title{font-size:clamp(40px,6vw,76px);letter-spacing:-.06em;line-height:.95;margin:14px 0 25px}.section-copy{color:#a7a39a;max-width:720px;font-size:17px;line-height:1.75}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:55px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}.flow-card{background:rgba(10,9,6,.9);padding:30px;min-height:230px;position:relative}.flow-num{font:12px 'DM Mono';color:var(--gold);opacity:.8}.flow-card h3{font-size:22px;margin:48px 0 10px}.flow-card p{color:#858178;line-height:1.55;font-size:14px}.flow-card:not(:last-child):after{content:"→";position:absolute;right:-15px;top:50%;z-index:3;color:var(--gold);font-size:24px;background:#090704;padding:0 3px}
+    .dashboard{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:55px}.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(22,18,10,.88),rgba(8,7,5,.9));border-radius:22px;padding:28px;box-shadow:inset 0 1px rgba(255,255,255,.04)}.panel-head{display:flex;justify-content:space-between;align-items:center;color:#aaa59a;font:12px 'DM Mono'}.live{color:#9cffad}.live:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#6dff8b;margin-right:7px;box-shadow:0 0 10px #6dff8b}
+    .big-number{font-size:clamp(42px,6vw,72px);font-weight:900;letter-spacing:-.06em;margin:25px 0 5px}.sub{color:#706c63;font-size:12px;font-family:'DM Mono'}.meter{height:10px;background:#18150e;border-radius:999px;overflow:hidden;margin:25px 0 13px;border:1px solid rgba(255,179,0,.12)}.meter i{display:block;width:73%;height:100%;background:linear-gradient(90deg,#ff9700,#ffe18a,#ff9700);box-shadow:0 0 18px rgba(255,179,0,.45);animation:meter 3s ease-in-out infinite alternate}
+    .ca{margin-top:22px;border:1px dashed rgba(255,179,0,.25);border-radius:13px;padding:13px 14px;display:flex;gap:12px;align-items:center;justify-content:space-between;background:rgba(255,179,0,.035)}.ca code{font:12px 'DM Mono';color:#d6d0c3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.copy{background:none;border:0;color:var(--gold);font:12px 'DM Mono';cursor:pointer}
+    .cta{border:1px solid rgba(255,179,0,.28);border-radius:28px;padding:70px 50px;background:radial-gradient(circle at 80% 40%,rgba(255,179,0,.13),transparent 32%),linear-gradient(135deg,rgba(28,22,10,.9),rgba(8,7,5,.92));position:relative;overflow:hidden}.cta:before{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(255,179,0,.12);border-radius:50%;right:-120px;top:-160px}.cta h2{font-size:clamp(42px,6vw,75px);line-height:.92;letter-spacing:-.06em;margin:12px 0 20px;max-width:760px}.cta p{color:#a5a097;max-width:650px;line-height:1.7}.cta-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    footer{padding:45px 0 65px;border-top:1px solid rgba(255,255,255,.07);color:#69655d;font:12px 'DM Mono'}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
+    @keyframes drift{to{transform:translate(7%,4%) scale(1.08)}} @keyframes spin{to{transform:rotate(360deg)}} @keyframes float{50%{transform:translateY(-14px)}} @keyframes pulse{50%{opacity:.35;transform:scale(.75)}} @keyframes scan{0%,100%{transform:translateY(-170px);opacity:0}20%,80%{opacity:.55}50%{transform:translateY(170px)}} @keyframes meter{to{width:91%}}
+    @media(max-width:850px){nav{height:70px}.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:120px}.hero-art{min-height:400px;order:-1}.logo-wrap{width:310px}.orb{width:360px}.stats{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.flow-card:not(:last-child):after{content:"↓";right:50%;top:auto;bottom:-17px}.dashboard{grid-template-columns:1fr}.cta{padding:45px 25px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas><div class="aurora"></div><div class="grid"></div><div class="vignette"></div><div class="progress" id="progress"></div>
+
+  <nav>
+    <a class="brand" href="#"><img src="logo.png" alt="DEXBOOSTED logo"><span>DEXBOOSTED</span></a>
+    <div class="navlinks"><a href="#thesis">Thesis</a><a href="#flywheel">Flywheel</a><a href="#boost">Boost</a><a href="#transparency">Transparency</a></div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><i class="dot"></i> Visibility is the game</div>
+          <h1>BUILD.<br><span class="gold">BOOST.</span><br>GET SEEN.</h1>
+          <p class="lead">Meme coins don't only compete on liquidity or hype — they compete for <strong>attention</strong>. DEXBOOSTED is built around a simple flywheel: designated trading-fee revenue can be directed toward DEX boosts and market visibility.</p>
+          <div class="actions">
+            <a class="btn primary" id="buyBtn" href="https://pump.fun/" target="_blank" rel="noopener">BUY ON PUMP.FUN ↗</a>
+            <a class="btn secondary" href="#boost">CONTRIBUTE TO BOOST ↘</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>100%</b><span>Designated fee allocation*</span></div>
+            <div class="stat"><b>∞</b><span>Visibility flywheel</span></div>
+            <div class="stat"><b>24/7</b><span>Market discovery</span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="orb"></div><div class="scan"></div>
+          <div class="logo-wrap"><img src="logo.png" alt="DEXBOOSTED"></div>
+        </div>
+      </section>
+
+      <section id="thesis" class="reveal">
+        <div class="section-kicker">01 / The thesis</div>
+        <h2 class="section-title">Attention is a<br><span class="gold">resource.</span></h2>
+        <p class="section-copy">Thousands of tokens launch. Only a fraction get meaningful visibility. DEXBOOSTED is designed around the idea that trading activity can help fund the very visibility needed for discovery — turning part of the token's economic activity into a recurring boost budget.</p>
+      </section>
+
+      <section id="flywheel" class="reveal">
+        <div class="section-kicker">02 / The flywheel</div>
+        <h2 class="section-title">Trade → Fund → Boost → <span class="gold">Repeat.</span></h2>
+        <div class="flow">
+          <article class="flow-card"><span class="flow-num">01</span><h3>TRADING</h3><p>People trade the token and generate designated fee revenue according to the final token mechanics.</p></article>
+          <article class="flow-card"><span class="flow-num">02</span><h3>FUND</h3><p>Allocated revenue is directed to the boost treasury rather than disappearing into an undefined marketing wallet.</p></article>
+          <article class="flow-card"><span class="flow-num">03</span><h3>BOOST</h3><p>The treasury is used for DEX boosts and other clearly disclosed visibility activities.</p></article>
+          <article class="flow-card"><span class="flow-num">04</span><h3>DISCOVER</h3><p>More visibility can put the token in front of more traders and restart the cycle.</p></article>
+        </div>
+      </section>
+
+      <section id="boost" class="reveal">
+        <div class="section-kicker">03 / Boost treasury</div>
+        <h2 class="section-title">Turn activity into<br><span class="gold">visibility.</span></h2>
+        <p class="section-copy">The dashboard below is ready for live on-chain data once the contract and treasury addresses are finalized. Until then, it is intentionally a visual placeholder rather than a claim of live balances.</p>
+        <div class="dashboard">
+          <div class="panel">
+            <div class="panel-head"><span>BOOST TREASURY</span><span class="live">SYSTEM READY</span></div>
+            <div class="big-number" id="treasury">$—</div>
+            <div class="sub">LIVE TREASURY BALANCE — CONNECT DATA TO ENABLE</div>
+            <div class="meter"><i></i></div>
+            <div class="sub">BOOST CAPACITY / VISIBILITY BUDGET</div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><span>CONTRACT</span><span>ON-CHAIN</span></div>
+            <div class="ca"><code id="caText">PASTE CONTRACT ADDRESS</code><button class="copy" id="copyBtn">COPY</button></div>
+            <div class="actions" style="margin-top:18px"><a class="btn primary" id="buyBtn2" href="https://pump.fun/" target="_blank" rel="noopener">BUY ↗</a><a class="btn secondary" href="#transparency">HOW FUNDS MOVE</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="transparency" class="reveal">
+        <div class="section-kicker">04 / Transparency</div>
+        <h2 class="section-title">No mystery.<br>Show the <span class="gold">flow.</span></h2>
+        <p class="section-copy">When the token launches, this section can expose the contract address, treasury wallet, boost transactions, allocation rules, and links to on-chain proof. The goal is simple: make the visibility budget observable.</p>
+        <div class="actions"><a class="btn secondary" href="#boost">VIEW BOOST TREASURY ↗</a><a class="btn secondary" href="https://pump.fun/" target="_blank" rel="noopener">OPEN PUMP.FUN ↗</a></div>
+      </section>
+
+      <section class="reveal">
+        <div class="cta">
+          <div class="section-kicker">The mission</div>
+          <h2>BUILD SOMETHING PEOPLE CAN <span class="gold">FIND.</span></h2>
+          <p>DEXBOOSTED is a visibility-first experiment. Trade it. Watch the treasury. See where the boost budget goes. Keep the flywheel transparent.</p>
+          <div class="cta-actions">
+            <a class="btn primary" href="https://pump.fun/" target="_blank" rel="noopener">BUY ON PUMP.FUN ↗</a>
+            <a class="btn secondary" href="#boost">CONTRIBUTE TO BOOST ↘</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="wrap footer-row"><span>© 2026 DEXBOOSTED.FUN</span><span>*Final fee allocation and token mechanics subject to the deployed contract and public documentation.</span></div></footer>
+
+<script>
+  // ====== EDIT THESE 2 VALUES WHEN YOUR TOKEN IS LIVE ======
+  const CONFIG = {
+    contractAddress: "PASTE_CA_HERE",
+    pumpFunUrl: "https://pump.fun/"
+  };
+
+  document.querySelectorAll("#buyBtn,#buyBtn2").forEach(a => a.href = CONFIG.pumpFunUrl);
+
+  const ca = document.getElementById("caText");
+  if (CONFIG.contractAddress !== "PASTE_CA_HERE") ca.textContent = CONFIG.contractAddress;
+
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    if (CONFIG.contractAddress === "PASTE_CA_HERE") return;
+    await navigator.clipboard.writeText(CONFIG.contractAddress);
+    document.getElementById("copyBtn").textContent = "COPIED";
+    setTimeout(() => document.getElementById("copyBtn").textContent = "COPY", 1400);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add("visible");
+  }), {threshold:.14});
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  // Scroll progress
+  const progress = document.getElementById("progress");
+  addEventListener("scroll", () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    progress.style.width = (scrollY / h * 100) + "%";
+  }, {passive:true});
+
+  // Animated ambient particles
+  const canvas = document.getElementById("bg"), ctx = canvas.getContext("2d");
+  let W,H,particles=[],mouse={x:-9999,y:-9999};
+  function resize(){W=canvas.width=innerWidth*devicePixelRatio;H=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);W=innerWidth;H=innerHeight}
+  function init(){particles=Array.from({length:90},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.7+.25,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,a:Math.random()*.5+.08}))}
+  function draw(){ctx.clearRect(0,0,W,H);for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){p.x+=dx/d*0.35;p.y+=dy/d*0.35}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,190,40,${p.a})`;ctx.fill()}requestAnimationFrame(draw)}
+  addEventListener("resize",()=>{resize();init()}); addEventListener("mousemove",e=>{mouse.x=e.clientX;mouse.y=e.clientY}); resize();init();draw();
+</script>
+</body>
+</html>
