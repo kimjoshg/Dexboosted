@@ -230,12 +230,12 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:42px 0 60px;color:#625
 <footer><div class="container footer-row"><span>© 2026 DEXBOOSTED.FUN</span><span><a href="https://x.com/DEX_BOOSTED" target="_blank" rel="noopener noreferrer">𝕏 @DEX_BOOSTED</a> &nbsp; • &nbsp; *Final fee allocation and token mechanics are defined by the deployed contract and public documentation.</span></div></footer>
 
 <script>
-const CONFIG={contractAddress:"PASTE_CA_HERE",pumpFunUrl:"https://pump.fun/"};
-document.querySelectorAll("[data-buy]").forEach(a=>a.href=CONFIG.pumpFunUrl);
+const CONFIG={contractAddress:"Jdn1Mmz86qgWXooEAvDajCwzXJmo5RoiiqfbSfYpump",pumpFunUrl:"https://pump.fun/coin/Jdn1Mmz86qgWXooEAvDajCwzXJmo5RoiiqfbSfYpump"};
+document.querySelectorAll("[data-buy]").forEach(a=>{a.href=CONFIG.pumpFunUrl;a.target="_blank";a.rel="noopener noreferrer";});
 const ca=document.getElementById("ca");
-if(CONFIG.contractAddress!=="PASTE_CA_HERE") ca.textContent=CONFIG.contractAddress;
+if(CONFIG.contractAddress) ca.textContent=CONFIG.contractAddress;
 document.getElementById("copy").addEventListener("click",async()=>{
-  if(CONFIG.contractAddress==="PASTE_CA_HERE") return;
+  if(!CONFIG.contractAddress) return;
   await navigator.clipboard.writeText(CONFIG.contractAddress);
   const b=document.getElementById("copy"); b.textContent="COPIED"; setTimeout(()=>b.textContent="COPY",1200);
 });
