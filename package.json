@@ -1,0 +1,12 @@
+{
+  "name": "dexboosted",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@pump-fun/pump-sdk": "latest",
+    "@pump-fun/pump-swap-sdk": "latest",
+    "@solana/spl-token": "latest",
+    "@solana/web3.js": "^1.98.0",
+    "bn.js": "^5.2.1"
+  }
+}
